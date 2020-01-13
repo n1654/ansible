@@ -1,0 +1,14 @@
+- hosts: servers
+  tasks:
+    - name: get ip address
+      shell: ip a | grep inet | grep eth0
+      register: ipaddress
+
+    - debug: msg="{{ ipaddress.stdout }}"
+
+    - name: check python works
+      add_me:
+         inet_eth0: "{{ ipaddress.stdout }}"
+      register: result
+
+    - debug: msg="{{ result }}"
