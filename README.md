@@ -1,26 +1,29 @@
-# ansible
+# Ansible Playground
 
-Instances:
+### Docker Instances
 1. ansible server
-2. non-ansible server
-3. non-ansible server
-###
-docker run -itd --name ansible-server ID
-docker run -itd --name non-ansible-server1 ID
-docker run -itd --name non-ansible-server2 ID
-###
+```sh
+$ docker run -itd --name ansible-server ID
+```
+2. non-ansible server1
+```sh
+$ docker run -itd --name non-ansible-server1 ID
+```
+3. non-ansible server2
+```sh
+$ docker run -itd --name non-ansible-server2 ID
+```
 
-Network:
-private shared network between them
-###
-docker network create private-network
-docker network connect private-network ansible-server
-docker network connect private-network non-ansible-server1
-docker network connect private-network non-ansible-server2
-###
+### Network
+Private shared network between them
+```sh
+$ docker network create private-network
+$ docker network connect private-network ansible-server
+$ docker network connect private-network non-ansible-server1
+$ docker network connect private-network non-ansible-server2
+```
 
-
-Default configuration:
+### Default packages
 - ansible server:
     - centos
     - ansible
