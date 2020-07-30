@@ -1,0 +1,48 @@
+version: "3.8"
+
+services:
+
+  ansible-server:
+    privileged: true
+    build:
+      context: .
+      dockerfile: ansible-server.dockerfile
+    ports:
+      - "60022:22"
+    tty: true
+    networks:
+      default:
+        ipv4_address: 172.20.20.101
+    hostname: ansible-server
+  
+  non-ansible-server1:
+    privileged: true
+    build:
+      context: .
+      dockerfile: non-ansible-server.dockerfile
+    ports:
+      - "60122:22"
+    tty: true
+    networks:
+      default:
+        ipv4_address: 172.20.20.102
+    hostname: non-ansible-server1
+  
+  non-ansible-server2:
+    privileged: true
+    build:
+      context: .
+      dockerfile: non-ansible-server.dockerfile
+    ports:
+      - "60222:22"
+    tty: true
+    networks:
+      default:
+        ipv4_address: 172.20.20.103
+    hostname: non-ansible-server2
+
+networks:
+  default:
+    ipam:
+      config:
+        - subnet: 172.20.20.0/24
