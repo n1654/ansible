@@ -1,5 +1,8 @@
 # Ansible Playground
 
+## Purpose
+Create ansible playgroung for futher testing/development
+
 ### Play
 1. Connect to ansible server from host
 ```sh
@@ -10,7 +13,18 @@ $ ansible-playbook --module-path /root/test/ /root/test/simple_module.yml -u roo
 $ ansible-playbook --module-path /root/test/ /root/test/simple_module.yml -u root -k
 ```
 
-### Default packages
+### Network
+        +----------------+         +-----------------+       +-----------------+
+        |  ansible-host  |         |non-ansible-host1|       |non-ansible-host2|
+        |      eth0:     |         |      eth0:      |       |      eth0:      |
+        |172.20.20.101/24|         |172.20.20.102/24 |       |172.20.20.103/24 |
+        +--------+-------+         +---------+-------+       +---------+-------+
+                 |                           |                         |
+                 |                           |                         |
+    +------------+---------------------------+-------------------------+-----------+
+                                               ansible_default:   172.20.20.0/24
+
+### Default configuration
 - ansible server:
     - centos
     - ansible
